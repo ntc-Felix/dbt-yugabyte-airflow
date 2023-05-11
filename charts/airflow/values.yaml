@@ -630,7 +630,7 @@ workers:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow worker log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow worker log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow worker log groomer sidecar (templated).
@@ -771,7 +771,7 @@ scheduler:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow scheduler log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow scheduler log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow scheduler log groomer sidecar (templated).
@@ -1244,7 +1244,7 @@ triggerer:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow triggerer log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow triggerer log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow triggerer log groomer sidecar (templated).
@@ -1962,20 +1962,20 @@ dags:
     ## optional subpath for dag volume mount
     subPath: ~
   gitSync:
-    enabled: false
+    enabled: true
 
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
     repo: https://github.com/ntc-Felix/dbt-yugabyte-airflow.git
-    branch: v2-2-stable
+    branch: master
     rev: HEAD
     depth: 1
     # the number of consecutive failures allowed before aborting
     maxFailures: 0
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
-    subPath: "airflow/prd/dags"
+    subPath: "airflow/prd/dags/"
     # if your repo needs a user name password
     # you can load them to a k8s secret like the one below
     #   ---
