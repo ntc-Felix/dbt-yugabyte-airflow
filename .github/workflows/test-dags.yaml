@@ -21,7 +21,7 @@ jobs:
 
       - name: Copy DAGs to production folder
         run: |
-          mkdir -p airflow/dags && cp -Rv airflow/dev/dags/* airflow/prd/dags/
+          mkdir -p airflow/prd/dags && cp -Rv airflow/dev/dags/* airflow/prd/dags/
         if: ${{ success() }}
 
       - name: Commit changes
