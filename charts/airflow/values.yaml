@@ -614,7 +614,7 @@ workers:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow worker log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow worker log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow worker log groomer sidecar (templated).
@@ -735,7 +735,7 @@ scheduler:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow scheduler log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow scheduler log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow scheduler log groomer sidecar (templated).
@@ -1827,7 +1827,7 @@ dags:
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: https://github.com/ntc-Felix/airflow-e2e-use-case.git
+    repo: https://github.com/ntc-Felix/dbt-yugabyte-airflow.git
     branch: master
     rev: HEAD
     depth: 1
@@ -1835,7 +1835,7 @@ dags:
     maxFailures: 0
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
-    subPath: "airflow/dags"
+    subPath: "airflow/prd/dags"
     # if your repo needs a user name password
     # you can load them to a k8s secret like the one below
     #   ---
@@ -1898,8 +1898,8 @@ logs:
     # Enable persistent volume for storing logs
     enabled: false
     # Volume size for logs
-    size: 100Gi
+    size: 10Gi
     # If using a custom storageClass, pass name here
-    storageClassName:
+    storageClassName: default
     ## the name of an existing PVC to use
     existingClaim:

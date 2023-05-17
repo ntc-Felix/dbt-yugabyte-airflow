@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: orders
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - country_code
+            - order_ids
