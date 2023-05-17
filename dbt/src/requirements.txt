@@ -1,2 +1,3 @@
 pip install 'elementary-data[duckdb]'
 pip install 'elementary-data[postgres]'
+pip install sqlfluff # consider adding it to your ci pipeline
