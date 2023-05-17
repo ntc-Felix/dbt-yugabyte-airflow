@@ -30,9 +30,9 @@ metadata:
     release: {{ .Release.Name }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     heritage: {{ .Release.Service }}
-    {{- if or (.Values.labels) (.Values.webserver.labels) }}
-      {{- mustMerge .Values.webserver.labels .Values.labels | toYaml | nindent 4 }}
-    {{- end }}
+{{- if or (.Values.labels) (.Values.webserver.labels) }}
+{{- mustMerge .Values.webserver.labels .Values.labels | toYaml | nindent 4 }}
+{{- end }}
 spec:
   podSelector:
     matchLabels:
@@ -41,9 +41,10 @@ spec:
       release: {{ .Release.Name }}
   policyTypes:
     - Ingress
-  {{- if $from }}
+{{- if $from }}
   ingress:
-    - from: {{- toYaml $from | nindent 6 }}
+    - from:
+{{ toYaml $from | indent 6 }}
       ports:
       {{ range .Values.webserver.networkPolicy.ingress.ports }}
         -
@@ -51,5 +52,5 @@ spec:
           {{ $key }}: {{ tpl (toString $val) $ }}
           {{- end }}
       {{- end }}
-  {{- end }}
+{{- end }}
 {{- end }}

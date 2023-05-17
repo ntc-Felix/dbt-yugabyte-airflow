@@ -570,6 +570,9 @@ primary:
   ##     command: ['do', 'something']
   ##
   initContainers: []
+    #- name: do-something
+    #  image: busybox
+    #  command: ["sh", "-c", "chown -R 1001:1001 /bitnami/postgresql/data && chmod -R 700 /bitnami/postgresql/data"]
   ## @param primary.extraPodSpec Optionally specify extra PodSpec for the PostgreSQL Primary pod(s)
   ##
   extraPodSpec: {}
